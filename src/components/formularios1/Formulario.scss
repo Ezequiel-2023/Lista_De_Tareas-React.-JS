@@ -1,0 +1,22 @@
+
+$colorButton : #674ec7;
+$colorMB3 :#84DCC6 ;
+$colorFormControl: #D5D8DC;
+
+
+.custom-form-style{
+   margin: 50px;
+}
+
+.btn-primary{
+   background-color: $colorButton
+};
+
+.mb-3 {
+   background-color: $colorMB3;
+   font-family: cursive;
+}
+
+.form-control{
+   background-color: $colorFormControl;
+}
