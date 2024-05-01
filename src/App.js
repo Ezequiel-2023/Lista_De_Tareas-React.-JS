@@ -1,5 +1,5 @@
-// archivo app principal 
-import logo from './logo.svg';
+// archivo app principal             
+
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Item from './components/Item/Item.js';
@@ -8,25 +8,33 @@ import Menu from './components/Menu/Menu.js';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useSelector } from 'react-redux';
 
- 
 function App() {
-  return (
-    <div className="App">
-      <Menu></Menu>
-      <Container>
-      <Row>
-        <Col>
-          <Formulario></Formulario></Col>
-        <Col>
-          <Item></Item> 
-          <Item></Item>
-          <Item></Item>  
-        </Col>
-      </Row>
-    </Container> 
-    </div>
-  );
+  const goals = useSelector((state)=>state.goals.Value);
+   return (
+     <div className="App">
+       <Menu />
+       <Container>
+         <Row>
+           <Col>
+             <Formulario />
+           </Col>
+           <Col>
+             <div>
+               {goals.map((task1, index) => (
+                 <Item
+                   name={task1.name}
+                   description={task1.description}
+                   dueDate={task1.dueDate}
+                 />
+               ))}
+             </div>
+           </Col>
+         </Row>
+       </Container>
+     </div>
+   );
 }
 
 export default App;

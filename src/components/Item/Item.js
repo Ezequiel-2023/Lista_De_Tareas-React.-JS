@@ -1,26 +1,28 @@
 // archivo js para el componete item
+import { useDispatch } from 'react-redux';
+import { removeGoal } from '../reducers/goalsSlice';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import './Item.scss'
+import './Item.scss';
 
-function Item() {
+function Item(props) {
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    dispatch(removeGoal(props.index)); 
+  };
+
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>Actividad</Card.Title>
-        <Card.Text>
-          Control De Tareas
-        </Card.Text>
+        <Card.Title>Control De Tareas</Card.Title>
+        <Card.Text>{props.name}</Card.Text>
         <Card.Title>Descripcion</Card.Title>
-        <Card.Text>
-          Se necesita crear una aplicación web para llevar el control de Tareas
-        </Card.Text>
+        <Card.Text>{props.description}</Card.Text>
         <Card.Title>Fecha</Card.Title>
-        <Card.Text>
-          22/04/2024
-        </Card.Text>
-        <Button variant="success">Enviar Proyecto</Button>
-        <Button variant="danger">Editar Tarea</Button>
+        <Card.Text>{props.dueDate}</Card.Text>
+        <Button variant="success">Editar </Button>
+        <Button variant="danger" onClick={handleDelete}>Eliminar </Button>
       </Card.Body>
     </Card>
   );

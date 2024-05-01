@@ -2,30 +2,31 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import './Menu.scss'
+import { useDispatch, useSelector } from 'react-redux';
+import {changeOption} from '../reducers/optionsSlice'
+
 
 function Menu() {
+  const option = useSelector((state) => state.option);
+  const dispatch = useDispatch();
+  const changeOptionFunc = (e) => {
+    e.preventDefault();
+    if (option === 'tasks') {
+      dispatch(changeOption({ option: 'goals' })); 
+    } else {
+      dispatch(changeOption({ option: 'tasks' }));
+    }
+  }
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">Agenda De Tareas</Navbar.Brand>
+        <Navbar.Brand href="#home">Tareas y Metas </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Inicio</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
+          <Nav className="me-auto" defaultActiveKey={option}>
+            <Nav.Link href="#tasks" eventKey='tasks' onClick={changeOptionFunc}>Tareas</Nav.Link>
+            <Nav.Link href="#goals" eventKey='goals' onClick={changeOptionFunc}>Metas</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
