@@ -8,6 +8,7 @@ import { addGoal } from '../reducers/goalsSlice';
 import { useRef } from 'react';
 
 
+
 function Formulario(props) {
   const inputRefName = useRef();
   const inputRefDescription = useRef();
