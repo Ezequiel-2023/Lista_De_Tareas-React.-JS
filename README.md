@@ -16,7 +16,33 @@ css
 html
 js 
 >>>>>>> 3270b4a6841fbbaa5627c3ab0f839302b7222b15
-empezamos a usar docker 
-comando para ejevutar  o crear la imagen usamos  el  siguiente comando:a
-docker build -t docker-react-image:1.0 .
+creando mi imagen
+docker build -t mi-imagen-nodejs .
+creando mi contenedor 
+docker run -d -p 80:80 --name mi-contenedor-nodejs mi-imagen-nodejs
+
+# Ejemplo React App
+
+## Descripción
+Este proyecto es una aplicación web de ejemplo construida con React y Docker.
+
+## Requisitos
+- Docker
+
+## Construcción de la Imagen Docker
+Para construir la imagen Docker, ejecute el siguiente comando en el directorio raíz del proyecto:
+
+```sh
+docker build -t mi-imagen-nodejs .
+
+Para ejecutar un contenedor desde la imagen Docker creada, use el siguiente comando:
+docker run -d -p 80:80 --name mi-contenedor-nodejs mi-imagen-nodejs
+
+Para verificar que el contenedor está en ejecución, utilice el siguiente comando:
+docker ps
+
+
+
+
+
 
